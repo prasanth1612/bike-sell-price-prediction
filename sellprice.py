@@ -1,0 +1,36 @@
+# -*- coding: utf-8 -*-
+"""
+Created on Fri Jun 25 21:09:02 2021
+
+@author: ADMIN
+"""
+import numpy as np
+from flask import Flask, request, jsonify, render_template
+import pickle
+import os
+import math
+os.chdir('D://my project')
+app = Flask(__name__,template_folder='template')
+model = pickle.load(open('reg.pkl', 'rb'))
+
+@app.route('/',methods=['GET'])
+def home():
+    return render_template("app.html")
+  
+
+@app.route('/predict',methods=['POST'])
+def predict():
+    if request.method == 'POST':
+        mileage = float(request.form['mileage'])
+        age = float(request.form['age'])
+        prediction = model.predict([[mileage,age]])
+        
+        output = math.floor(prediction)
+        if output<0:
+            return render_template('app1.html',prediction_text='Sorry you cannot sell your bike')
+		
+        else:
+            return render_template('app.html',prediction_text=float(output))
+
+if __name__ == "__main__":
+    app.run(debug=True)
