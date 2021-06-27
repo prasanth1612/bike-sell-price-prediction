@@ -1,1 +1,1 @@
-web: gunicorn app:sellprice
+web: gunicorn sellprice:app
