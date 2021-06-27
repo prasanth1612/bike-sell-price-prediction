@@ -7,9 +7,7 @@ Created on Fri Jun 25 21:09:02 2021
 import numpy as np
 from flask import Flask, request, jsonify, render_template
 import pickle
-import os
 import math
-os.chdir('D://my project')
 app = Flask(__name__,template_folder='template')
 model = pickle.load(open('reg.pkl', 'rb'))
 
