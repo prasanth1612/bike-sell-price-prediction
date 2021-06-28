@@ -1,9 +1,3 @@
-# -*- coding: utf-8 -*-
-"""
-Created on Fri Jun 25 21:09:02 2021
-
-@author: ADMIN
-"""
 import numpy as np
 from flask import Flask, request, jsonify, render_template
 import pickle
@@ -25,7 +19,7 @@ def predict():
         
         output = math.floor(prediction)
         if output<0:
-            return render_template('app1.html',prediction_text='Sorry you cannot sell your bike')
+            return render_template('app.html',prediction_text='Sorry you cannot sell your bike')
 		
         else:
             return render_template('app.html',prediction_text=float(output))
