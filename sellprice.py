@@ -19,7 +19,7 @@ def predict():
         
         output = math.floor(prediction)
         if output<0:
-            return render_template('app.html',prediction_text='Sorry you cannot sell your bike')
+            return render_template('app1.html',prediction_text='Sorry you cannot sell your bike')
 		
         else:
             return render_template('app.html',prediction_text=float(output))
