@@ -5,7 +5,7 @@ import math
 app = Flask(__name__,template_folder='template')
 model = pickle.load(open('reg.pkl', 'rb'))
 
-@app.route('/',methods=['GET'])
+@app.route('/',methods=['POST'])
 def home():
     return render_template("app.html")
   
